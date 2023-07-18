@@ -1,27 +1,22 @@
 import express from "express";
-import mongoose from "mongoose";
 import { config } from "dotenv";
 import { router } from "./routes/routes";
+import cors from "cors";
+import morgan from "morgan";
+import "./db/connection";
+import { createContext } from "./controllers/middleware";
 
 config();
 
-const mongoConnectionString = process.env.DATABASE_URL;
-mongoose.connect(mongoConnectionString);
-const database = mongoose.connection;
-
-database.on("error", (error) => {
-  console.log(error);
-});
-
-database.once("connected", () => {
-  console.log("Database Connected");
-});
-
-const PORT = 3000;
+const { PORT = 3000 } = process.env;
 
 const app = express();
 
+app.use(cors()); // add cors headers
+app.use(morgan("tiny")); // log the request for debugging
 app.use(express.json());
+app.use(createContext);
+
 app.use("/api", router);
 
 app.listen(PORT, () => {
