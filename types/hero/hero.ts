@@ -1,5 +1,5 @@
 export type Role = "tank" | "damage" | "support";
-export type DamageType = "hitscan" | "projectile" | "beam";
+export type DamageType = "hitscan" | "projectile" | "beam" | "melee";
 export type Playstyle = "rush" | "dive" | "poke";
 
 export interface IHero {
