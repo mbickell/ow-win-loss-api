@@ -37,5 +37,5 @@ export interface IRecord {
   newPosition?: Top500;
   newPercentage?: Percentage;
   newSeason?: boolean;
-  timeStamp?: Date; //not exposed to users
+  dateTime?: Date;
 }

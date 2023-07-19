@@ -36,7 +36,7 @@ const RecordScheme = new Schema<IRecord>({
       message: "{VALUE} is not a valid role"
     }
   },
-  timeStamp: { type: Date, required: true },
+  dateTime: { type: Date, required: true },
   username: { type: String, required: true }
 });
 

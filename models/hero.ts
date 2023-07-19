@@ -18,7 +18,7 @@ const HeroScheme = new Schema<IHero>({
     required: true,
     validate: {
       validator: isDamageTypeEnum,
-      message: `{VALUE} is not a valid damage type`
+      message: `a damage type in "{VALUE}" is not a valid damage type`
     }
   },
   playstyle: {
@@ -26,7 +26,7 @@ const HeroScheme = new Schema<IHero>({
     required: true,
     validate: {
       validator: isPlaystyleEnum,
-      message: `{VALUE} is not a valid playstyle`
+      message: `a playstyle in "{VALUE}" is not a valid playstyle`
     }
   }
 });
