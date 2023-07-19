@@ -1,8 +1,8 @@
 import { config } from "dotenv";
 import { RequestHandler } from "express";
 import { JwtPayload, verify } from "jsonwebtoken";
-import { User } from "../model/user";
-import { Todo } from "../model/todo";
+import { User } from "../models/user";
+import { Hero } from "../models/hero";
 
 config();
 
@@ -12,7 +12,7 @@ export const createContext: RequestHandler = (req, res, next) => {
   req.context = {
     models: {
       User,
-      Todo
+      Hero
     }
   };
   next();

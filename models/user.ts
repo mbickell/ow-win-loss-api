@@ -6,4 +6,4 @@ const UserScheme = new Schema<ILoginDetails>({
   password: { type: String, unique: true, required: true }
 });
 
-export const User = model("User", UserScheme);
+export const User = model("User", UserScheme, "UserData");

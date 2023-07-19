@@ -1,7 +1,7 @@
 import { JwtPayload } from "jsonwebtoken";
 import { Model } from "mongoose";
 import { ILoginDetails } from "../core/auth";
-import { ITodo } from "../todo/todo";
+import { IHero } from "../hero/hero";
 
 // access the global scope inside our module
 declare global {
@@ -11,7 +11,7 @@ declare global {
       context: {
         models: {
           User: Model<ILoginDetails>;
-          Todo: Model<ITodo>;
+          Hero: Model<IHero>;
         };
       };
       user: JwtPayload;
