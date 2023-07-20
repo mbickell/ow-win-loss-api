@@ -1,4 +1,3 @@
-import { Date } from "mongoose";
 import { CreateArrayWithLengthX, NumericRange } from "../core/helper";
 
 export enum SkillTier {
@@ -31,14 +30,12 @@ export interface IRecord {
   outcome: Outcome;
   heroesPlayed: string[];
   username: string;
-  dateTime?: Date;
+  newSeason?: boolean;
 }
 
 export interface IFullRecord extends IRecord {
-  newRanking?: boolean;
-  newSkillTier?: SkillTier;
+  newSkillTier: SkillTier;
   newDivision?: Division;
   newPosition?: Top500;
   newPercentage?: Percentage;
-  newSeason?: boolean;
 }

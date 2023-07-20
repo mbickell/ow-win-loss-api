@@ -51,7 +51,7 @@ heroRouter.put("/:name", async (req: TypedRequest<IHero>, res) => {
     const name = req.params.name;
     await Hero.updateOne({ name }, req.body, { new: true });
     res.status(200).json({
-      message: `Hero with name ${req.body.name} created`,
+      message: `Hero with name ${req.body.name} updated`,
       hero: req.body
     });
   } catch (error) {

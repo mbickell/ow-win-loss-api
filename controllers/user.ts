@@ -38,7 +38,9 @@ userRouter.post("/login", async (req: TypedRequest<ILoginDetails>, res) => {
       const result = await compare(req.body.password, user.password);
       if (result) {
         // sign token and send it in response
-        const token = await sign({ username: user.username }, SECRET);
+        const token = sign({ username: user.username }, SECRET);
+        console.log(token, user.username);
+
         res.json({ token });
       } else {
         res.status(400).json({ error: "password doesn't match" });

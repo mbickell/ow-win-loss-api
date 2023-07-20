@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 import { RequestHandler } from "express";
-import { JwtPayload, verify } from "jsonwebtoken";
+import { JwtPayload, verify, decode } from "jsonwebtoken";
 import { User } from "../models/user";
 import { Hero } from "../models/hero";
 import { Record } from "../models/record";
@@ -30,10 +30,12 @@ export const isLoggedIn: RequestHandler = async (req, res, next) => {
       // parse token from header
       const token = req.headers.authorization.split(" ")[1]; //split the header and get the token
       if (token) {
-        const payload = await verify(token, process.env.SECRET);
+        const payload = verify(token, process.env.SECRET);
         if (payload) {
           // store user data in request object
-          req.user = payload as JwtPayload;
+          const newToken = (payload as JwtPayload).Authorization.split(" ")[1];
+          const user = decode(newToken);
+          req.user = user;
           next();
         } else {
           res.status(400).json({ error: "token verification failed" });

@@ -17,7 +17,7 @@ declare global {
           FullRecord: Model<IFullRecord>;
         };
       };
-      user: JwtPayload;
+      user: any;
     }
   }
 }
