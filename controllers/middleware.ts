@@ -3,6 +3,8 @@ import { RequestHandler } from "express";
 import { JwtPayload, verify } from "jsonwebtoken";
 import { User } from "../models/user";
 import { Hero } from "../models/hero";
+import { Record } from "../models/record";
+import { FullRecord } from "../models/fullRecord";
 
 config();
 
@@ -12,7 +14,9 @@ export const createContext: RequestHandler = (req, res, next) => {
   req.context = {
     models: {
       User,
-      Hero
+      Hero,
+      Record,
+      FullRecord
     }
   };
   next();

@@ -40,4 +40,4 @@ const FullRecordScheme = new Schema<IFullRecord>({
   username: { type: String, required: true }
 });
 
-export const Hero = model("Hero", FullRecordScheme, "Records");
+export const FullRecord = model("FullRecord", FullRecordScheme, "Records");
