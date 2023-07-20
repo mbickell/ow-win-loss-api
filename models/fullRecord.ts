@@ -1,12 +1,12 @@
 import { Schema, model } from "mongoose";
-import { IRecord } from "../types/record/record";
+import { IFullRecord } from "../types/record/record";
 import {
   isCompRoleEnum,
   isOutcomeEnum,
   isSkillTierEnum
 } from "../validators/record";
 
-const RecordScheme = new Schema<IRecord>({
+const FullRecordScheme = new Schema<IFullRecord>({
   heroesPlayed: { type: [String], required: true },
   newDivision: { type: Number, min: 1, max: 5 },
   newPercentage: { type: Number, min: 1, max: 100 },
@@ -40,4 +40,4 @@ const RecordScheme = new Schema<IRecord>({
   username: { type: String, required: true }
 });
 
-export const Hero = model("Hero", RecordScheme, "Records");
+export const Hero = model("Hero", FullRecordScheme, "Records");

@@ -31,11 +31,14 @@ export interface IRecord {
   outcome: Outcome;
   heroesPlayed: string[];
   username: string;
+  dateTime?: Date;
+}
+
+export interface IFullRecord extends IRecord {
   newRanking?: boolean;
   newSkillTier?: SkillTier;
   newDivision?: Division;
   newPosition?: Top500;
   newPercentage?: Percentage;
   newSeason?: boolean;
-  dateTime?: Date;
 }
