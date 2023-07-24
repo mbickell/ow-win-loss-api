@@ -5,6 +5,7 @@ import { User } from "../models/user";
 import { Hero } from "../models/hero";
 import { Record } from "../models/record";
 import { FullRecord } from "../models/fullRecord";
+import { getToken } from "../helpers/jwt";
 
 config();
 
@@ -28,12 +29,12 @@ export const isLoggedIn: RequestHandler = async (req, res, next) => {
     // check if auth header exists
     if (req.headers.authorization) {
       // parse token from header
-      const token = req.headers.authorization.split(" ")[1]; //split the header and get the token
+      const token = getToken(req.headers.authorization); //split the header and get the token
       if (token) {
         const payload = verify(token, process.env.SECRET);
         if (payload) {
           // store user data in request object
-          const newToken = (payload as JwtPayload).Authorization.split(" ")[1];
+          const newToken = getToken((payload as JwtPayload).Authorization);
           const user = decode(newToken);
           req.user = user;
           next();
